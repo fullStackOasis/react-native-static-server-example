@@ -10,8 +10,11 @@
     "test": "jest"
   },
   "dependencies": {
+    "@dr.pogodin/react-native-fs": "^2.24.5",
+    "@dr.pogodin/react-native-static-server": "^0.13.0",
     "react": "18.2.0",
-    "react-native": "0.73.7"
+    "react-native": "0.73.7",
+    "react-native-webview": "^13.8.6"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
