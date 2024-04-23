@@ -1,79 +1,37 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Demo of react-native-static-server
 
-# Getting Started
+This example project demonstrates the use of [`react-native-static-server`](https://github.com/birdofpreyru/react-native-static-server) on Android. 
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+The work was done on Ubuntu 22 with a physical mobile device.
 
-## Step 1: Start the Metro Server
+These were the steps taken to get it working:
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+## Start with default React Native 0.73.7 project
 
-To start Metro, run the following command from the _root_ of your React Native project:
+This project was initialized using the standard React Native command line tools.
 
-```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
+```
+npx react-native@0.73.7 init ReactNativeStaticServer --version 0.73.7
 ```
 
-## Step 2: Start your Application
+## Copy App.tsx to project
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+[App.tsx is copied from react-native-static-server project's example](https://raw.githubusercontent.com/birdofpreyru/react-native-static-server/master/example/src/App.tsx).
 
-### For Android
+## Update android/build.gradle minSdkVersion
 
-```bash
-# using npm
-npm run android
+Package `react-native-static-server` requires minSdkVersion to be 28, so I updated `android/build.gradle` accordingly.
 
-# OR using Yarn
-yarn android
+## npm install required packages
+
+Finally, npm was used to install required packages:
+
+```
+npm i '@dr.pogodin/react-native-static-server'
+npm i react-native-webview
+npm i @dr.pogodin/react-native-fs
 ```
 
-### For iOS
+## Run
 
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+In one terminal window, run `npm start`. In a second terminal, run `npm run android`.
