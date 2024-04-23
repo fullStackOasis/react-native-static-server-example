@@ -1,3 +1,7 @@
+/**
+ * Copy of https://raw.githubusercontent.com/birdofpreyru/react-native-static-server/master/example/src/App.tsx
+ * That code is MIT licensed.
+ */
 import React, { useEffect, useRef, useState } from 'react';
 
 import {
@@ -22,12 +26,11 @@ import {
   unlink,
 } from '@dr.pogodin/react-native-fs';
 
-import {resolveAssetsPath} from '@dr.pogodin/react-native-static-server';
-
 import { WebView } from 'react-native-webview';
 
 import Server, {
-  STATES
+  STATES,
+  resolveAssetsPath,
 } from '@dr.pogodin/react-native-static-server';
 
 export default function App() {
@@ -114,7 +117,12 @@ export default function App() {
         }
         if (extract) {
           console.log('Extracting web server assets...');
-          await copyFileAssets('webroot', fileDir);
+          try {
+            await copyFileAssets('webroot', fileDir);
+          } catch (err) {
+            console.log(err);
+            console.error(err);
+          }
         }
       }
 
@@ -133,7 +141,10 @@ export default function App() {
           `New state: "${STATES[newState]}".\n`,
           `Details: "${details}".`,
         );
-        if (error) console.error(error);
+        if (error) {
+          console.log(error);
+          console.error(error);
+        }
       });
       const res = await server?.start();
       if (res && server) {
